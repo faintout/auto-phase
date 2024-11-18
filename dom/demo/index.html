@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="phase-area">
+    <div id="phase1"></div>
+    <div id="phase2"></div>
+    <div id="phase3"></div>
+    <div id="phase4"></div>
+  </div>
+  <script type="module">
+    import AutoPhase from '../src/index.js';
+        const data = [
+            {
+              "name": "北",
+              "code": 0,
+              directionAngle:0,
+              lineCode:['1','2','3'],
+              "desTempPoint": [
+                "176.72909642057115",
+                "275",
+                "275",
+                "10"
+              ]
+            },
+            {
+              "name": "南1",
+              "code": 5,
+              lineCode:['1-1','2','3-1'],
+              directionAngle:90,
+
+              "desTempPoint": [
+                "275",
+                "226.58500160427158",
+                "275",
+                "540"
+              ]
+            },
+            {
+              "name": "南",
+              "code": 4,
+              lineCode:['1','2','3'],
+              directionAngle:180,
+
+              "desTempPoint": [
+                "275",
+                "226.58500160427158",
+                "275",
+                "540"
+              ]
+            },
+            {
+              "name": "东",
+              "code": 2,
+              directionAngle:270,
+              lineCode:['1-1','2','3-1'],
+              "desTempPoint": [
+                "375.144080424987",
+                "275",
+                "540",
+                "275"
+              ]
+            },
+          ]
+          const phaseList = [
+        {
+            "phaseCode": "1",
+            "phaseRelFlowList": [
+                {
+                    "direction": 2,
+                    "directionName": "东",
+                    "directionAngle": 180.0,
+                    "laneDirection": [
+                        2,
+                        4
+                    ],
+                    "laneDirectionName": [
+                        "右转",
+                        "直行"
+                    ],
+                    "pedestrianAngle": 90.0,
+                    "enterExitPedestrian": [
+                        0,
+                        1
+                    ],
+                    "enterExitPedestrianName": [
+                        "北入口行人",
+                        "北出口行人"
+                    ],
+                    "conflictLaneDirection":null,
+                    "conflictLaneDirectionName": null
+                },
+                {
+                    "direction": 6,
+                    "directionName": "西",
+                    "directionAngle": 0.0,
+                    "laneDirection": [
+                        3,
+                        1
+                    ],
+                    "laneDirectionName": [
+                        "右转",
+                        "直行"
+                    ],
+                    "pedestrianAngle": 270.0,
+                    "enterExitPedestrian": [
+                        0,
+                        1
+                    ],
+                    "enterExitPedestrianName": [
+                        "南入口行人",
+                        "南出口行人"
+                    ],
+                    "conflictLaneDirection": null,
+                    "conflictLaneDirectionName": null
+                }
+            ]
+        },
+        {
+            "phaseCode": "2",
+            "phaseRelFlowList": [
+                {
+                    "direction": 4,
+                    "directionName": "南",
+                    "directionAngle": 180.0,
+                    "laneDirection": [
+                        3,
+                        1
+                    ],
+                    "laneDirectionName": [
+                        "右转",
+                        "直行"
+                    ],
+                    "pedestrianAngle": 90.0,
+                    "enterExitPedestrian": [
+                        0,
+                        1
+                    ],
+                    "enterExitPedestrianName": [
+                        "东入口行人",
+                        "东出口行人"
+                    ],
+                    "conflictLaneDirection": null,
+                    "conflictLaneDirectionName": null
+                },
+                {
+                    "direction": 0,
+                    "directionName": "北",
+                    "directionAngle": 0.0,
+                    "laneDirection": [
+                        3,
+                        1
+                    ],
+                    "laneDirectionName": [
+                        "右转",
+                        "直行"
+                    ],
+                    "pedestrianAngle": 270.0,
+                    "enterExitPedestrian": [
+                        0,
+                        1
+                    ],
+                    "enterExitPedestrianName": [
+                        "西入口行人",
+                        "西出口行人"
+                    ],
+                    "conflictLaneDirection": null,
+                    "conflictLaneDirectionName": null
+                }
+            ]
+        },
+        {
+            "phaseCode": "3",
+            "phaseRelFlowList": [
+                {
+                    "direction": 2,
+                    "directionName": "东",
+                    "directionAngle": 90.0,
+                    "laneDirection": [
+                        2
+                    ],
+                    "laneDirectionName": [
+                        "左转"
+                    ],
+                    "pedestrianAngle": null,
+                    "enterExitPedestrian": null,
+                    "enterExitPedestrianName": null,
+                    "conflictLaneDirection": null,
+                    "conflictLaneDirectionName": null
+                },
+                {
+                    "direction": 6,
+                    "directionName": "西",
+                    "directionAngle": 270.0,
+                    "laneDirection": [
+                        2
+                    ],
+                    "laneDirectionName": [
+                        "左转"
+                    ],
+                    "pedestrianAngle": null,
+                    "enterExitPedestrian": null,
+                    "enterExitPedestrianName": null,
+                    "conflictLaneDirection": null,
+                    "conflictLaneDirectionName": null
+                }
+            ]
+        },
+        {
+            "phaseCode": "4",
+            "phaseRelFlowList": [
+                {
+                    "direction": 4,
+                    "directionName": "南",
+                    "directionAngle": 180.0,
+                    "laneDirection": [
+                        2
+                    ],
+                    "laneDirectionName": [
+                        "左转"
+                    ],
+                    "pedestrianAngle": null,
+                    "enterExitPedestrian": null,
+                    "enterExitPedestrianName": null,
+                    "conflictLaneDirection": null,
+                    "conflictLaneDirectionName": null
+                },
+                {
+                    "direction": 0,
+                    "directionName": "北",
+                    "directionAngle": 0.0,
+                    "laneDirection": [
+                        2
+                    ],
+                    "laneDirectionName": [
+                        "左转"
+                    ],
+                    "pedestrianAngle": null,
+                    "enterExitPedestrian": null,
+                    "enterExitPedestrianName": null,
+                    "conflictLaneDirection": null,
+                    "conflictLaneDirectionName": null
+                }
+            ]
+        }
+    ]
+        for(const index in phaseList){
+          const autoPhase = new AutoPhase('phase'+(Number(index)+1),phaseList[index]?.phaseRelFlowList);
+          // autoPhase.update(phaseList[index]?.phaseRelFlowList)
+        }
+    </script>
+</body>
+<style>
+  #phase1,#phase2,#phase3,#phase4 {
+    width: 140px;
+    height: 140px;
+    
+  }
+  .phase-area {
+    height: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10%;
+  }
+
+  html,body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: #001529
+  }
+</style>
+
+</html>
