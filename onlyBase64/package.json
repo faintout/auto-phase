@@ -1,0 +1,13 @@
+{
+    "name": "auto-phase",
+    "version": "0.0.0",
+    "repository": "https://github.com/faintout/auto-phase",
+    "author": "faintout",
+    "license": "MIT",
+    "description": "基于Canvas绘制相位展示",
+    "main": "src/index.js",
+    "files": [
+        "demo",
+        "src"
+    ]
+}
