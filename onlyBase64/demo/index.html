@@ -9,13 +9,22 @@
 
 <body>
   <div class="phase-area">
-    <img id="phase1"></img>
-    <img id="phase2"></img>
-    <img id="phase3"></img>
-    <img id="phase4"></img>
+    <div class="normal">
+        <img id="phase-1"></img>
+        <img id="phase-2"></img>
+        <img id="phase-3"></img>
+        <img id="phase-4"></img>
+    </div>
+    <div class="bold">
+        <img id="phase-bold-1"></img>
+        <img id="phase-bold-2"></img>
+        <img id="phase-bold-3"></img>
+        <img id="phase-bold-4"></img>
+    </div>
   </div>
   <script type="module">
     import AutoPhase from '../src/index.js';
+    import AutoPhaseBold from '../src/boldIndex.js';
         const data = [
             {
               "name": "北",
@@ -267,23 +276,37 @@
         console.log('autoPhase',phaseImgList);
         for(let i of phaseImgList){
             //设置phase1到phase4 的图片
-            document.getElementById(`phase${i.phaseCode}`).src = i.iconBase64
+            document.getElementById(`phase-${i.phaseCode}`).src = i.iconBase64
+        }
+        const autoPhaseBold = new AutoPhaseBold(phaseList);
+        const phaseBoldImgList  = await autoPhaseBold.generatePhase()
+        for(let i of phaseBoldImgList){
+            //设置phase1到phase4 的图片
+            document.getElementById(`phase-bold-${i.phaseCode}`).src = i.iconBase64
         }
     </script>
 </body>
 <style>
-  #phase1,#phase2,#phase3,#phase4 {
-    width: 140px;
-    height: 140px;
-    
-  }
+
   .phase-area {
     height: 100%;
     align-items: center;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    gap: 10%;
+    gap: 40px;
+  }
+  
+  .normal, .bold {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    align-items: center;
+  }
+  
+  .normal img, .bold img {
+    width: 200px;
+    height: 200px;
   }
 
   html,body {

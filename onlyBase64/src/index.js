@@ -76,7 +76,7 @@ export default class AutoPhase {
         this.ctx = null //画布
         this.images = new Map()//存储相位、人行道图片
         this.debug = false //调试模式
-        this.dpr = window.devicePixelRatio || 1; //设备像素比
+        this.dpr = 5||window.devicePixelRatio || 1; //设备像素比
         //画布宽高
         this.width=140;
         this.height=140;
